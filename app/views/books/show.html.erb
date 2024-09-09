@@ -24,6 +24,20 @@
           <td>
             コメント数：<%= @book.book_comments.count %>
           </td>
+
+          <div id="post_raty"></div>
+          <script>
+            let elem = document.querySelector('#post_raty');
+            let opt = {
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+             };
+            raty(elem,opt);
+          </script>
+
+
+
           <% if @user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
